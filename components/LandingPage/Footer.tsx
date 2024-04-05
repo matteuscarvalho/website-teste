@@ -1,5 +1,6 @@
 import type { ImageWidget as LiveImage } from "apps/admin/widgets.ts";
 import Divider from "$store/components/footer/Divider.tsx";
+import Privacy from "$store/components/ui/Privacy.tsx";
 import Layout from "deco-sites/black-friday-lp/components/LandingPage/Layout.tsx";
 
 export type ISection = {
@@ -48,12 +49,18 @@ export interface Props {
     alt: string;
     src: LiveImage;
     href: string;
-  }[]
+  }[];
 }
 
-function Footer(
-  { section, social, payments, backgroundColor, textColor, extraLinks, logos }: Props,
-) {
+function Footer({
+  section,
+  social,
+  payments,
+  backgroundColor,
+  textColor,
+  extraLinks,
+  logos,
+}: Props) {
   return (
     <Layout backgroundColor={backgroundColor} textColor={textColor}>
       <Divider />
@@ -63,7 +70,9 @@ function Footer(
             {title && <h2 class="text-xl uppercase">{title}</h2>}
             <>
               {items?.map(({ label, href }) => (
-                <a class="mt-2" href={href}>{label}</a>
+                <a class="mt-2" href={href}>
+                  {label}
+                </a>
               ))}
             </>
           </section>
@@ -93,9 +102,7 @@ function Footer(
           {payments && (
             <section class="flex flex-col">
               {payments.title && (
-                <h2 class="text-xl uppercase">
-                  {payments?.title}
-                </h2>
+                <h2 class="text-xl uppercase">{payments?.title}</h2>
               )}
               <div class="flex flex-wrap flex-row">
                 {payments?.items?.map(({ image, description }) => (
@@ -124,7 +131,7 @@ function Footer(
         </div>
       </div>
       <ul class="flex justify-start flex-wrap gap-4">
-      {logos?.map((item) => (
+        {logos?.map((item) => (
           <li>
             <a href={item.href} target="_blank" rel="noopener noreferrer">
               <img src={item.src} alt={item.alt} max-height="120px" />
@@ -132,6 +139,7 @@ function Footer(
           </li>
         ))}
       </ul>
+      <Privacy />
     </Layout>
   );
 }

@@ -74,7 +74,12 @@ function Header({
         >
           <div class="bg-base-100 fixed w-full z-50">
             <Alert alerts={alerts} />
-            <Navbar items={navItems} searchbar={searchbar} logo={logo} irParaOSite={irParaOSite} />
+            <Navbar
+              items={navItems}
+              searchbar={searchbar}
+              logo={logo}
+              irParaOSite={irParaOSite}
+            />
           </div>
         </Drawers>
       </header>
